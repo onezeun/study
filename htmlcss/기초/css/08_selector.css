@@ -1,0 +1,74 @@
+.navbar li {
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  background: #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.navbar a {
+  font-size: 15px;
+  text-decoration: none; /* a 태그 밑줄 제거 */
+}
+
+.navbar a:visited {
+  color: black;
+}
+
+.container {
+  width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left {
+  width: 80%;
+  height: 300px;
+  float: left;
+}
+
+.right {
+  width: 20%;
+  height: 300px;
+  float: left;
+}
+
+.top-content {
+  width: 100%;
+  height: 20%;
+  float: top;
+}
+
+.profile-img {
+  width: 50px;
+  display: block;
+  float: left;
+}
+
+.name {
+  float: left;
+}
+
+.nickname {
+  margin: 5px 5px 2px 5px;
+}
+
+.time {
+  color: grey;
+  font-size: 10px;
+  margin: 0 5px 5px 5px;
+}
+
+.bottom-content {
+  width: 100%;
+  height: 80%;
+  margin: 5px;
+}
+
+.con {
+  margin: 5px;
+  font-size: 13px;
+  color: grey;
+}
