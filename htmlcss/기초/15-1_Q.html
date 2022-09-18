@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div,
+    input,
+    table {
+      box-sizing: border-box;
+    }
+
+    .t-white {
+      background-color: #b2ccd6;
+      padding: 30px;
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h3 {
+      color: #28496f;
+      margin-left: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-radius: 10px;
+      background-color: white;
+      margin: auto;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #c1d8f3;
+      padding: 25px
+    }
+
+    th {
+
+      text-align: center;
+      color: #90a1b5;
+      font-weight: bold;
+    }
+
+    img {
+      width: 50px;
+    }
+
+    .sony {
+      display: inline-block;
+      color: black;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .o-name {
+      color: #90a1b5;
+      font-weight: bold;
+    }
+
+    .r-td {
+      text-align: right;
+      color: #90a1b5;
+      font-weight: bold;
+    }
+
+    .total {
+      color: #28496f;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .pay {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #28496f;
+      float: left;
+    }
+
+    button {
+      float: right;
+      margin-right: 20px;
+      color: white;
+      background-color: #28496f;
+      border-radius: 5px;
+      width: 220px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="t-white">
+    <h3>Your Shopping Cart</h3>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">ITEM</th>
+            <th>AMOUNT</th>
+            <th>PRICE</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="../img/moon.png"></td>
+            <td>
+              <div class="sony">SONY</div>
+              <div class="o-name">FE 70-200 mm F2.8 GM OSS</div>
+            </td>
+            <td class="r-td">1</td>
+            <td class="r-td">1979.00</td>
+            <td class="total">1979.00</td>
+          </tr>
+          <tr>
+            <td><img src="../img/sun.png"></td>
+            <td>
+              <div class="sony">SONY</div><br>
+              <div class="o-name">SonnarT* E 24mm F1.8 ZA</div>
+
+            </td>
+            <td class="r-td">1</td>
+            <td class="r-td">989.00</td>
+            <td class="total">989.00</td>
+          </tr>
+          <tr>
+            <td class="total" style="font-size: 20px;" colspan="5">2968.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pay">
+      <a href="#">Edit your shopping cart</a>
+      <button>Choose payment method</button>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+</body>
+
+</html>
