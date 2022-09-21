@@ -1,0 +1,72 @@
+div {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+}
+
+.nav_container {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  padding: 5px;
+}
+
+.nav_item {
+  margin-right: 10px;
+}
+
+.main_background {
+  width: 100%;
+  height: 500px;
+  background-image: url(../../img/back.png);
+  background-size: cover; /* cover: 꽉 채워라 */
+  background-repeat: no-repeat; /* 배경 반복 제거 */
+  background-position: center;
+  padding: 1px;
+}
+
+.main_title {
+  color: white;
+  font-size: 40px;
+  margin-top: 200px;
+  text-align: center;
+}
+
+.content {
+  text-align: center;
+  color: white;
+}
+
+.main_btn {
+  padding: 10px;
+  font-size: 13px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 50px auto;
+  width: 150px;
+}
+
+.box1 {
+  width: 80%;
+  max-width: 600px;
+  margin: auto; /* 가운데 정렬 */
+  padding: 20px;
+  text-align: center;
+  background-color: #eee;
+  position: relative;
+  top: -40px;
+  box-sizing: border-box;
+}
+
+input[type='text'] {
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
