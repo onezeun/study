@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .video-box {
+      height: 600px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .video-container {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <video src="tft8.0.mp4" controls></video> -->
+  <!-- <video controls autoplay muted>
+  <source src="tft8.0.mp4" type="video/mp4">
+</video> -->
+
+  <div class="video-box">
+    <video class="video-container" autoplay muted loop>
+      <source src="tft8.0.mp4" type="video/mp4">
+    </video>
+    <h3 class="video-title">Buy Our Shoes!</h3>
+  </div>
+
+</body>
+
+</html>
