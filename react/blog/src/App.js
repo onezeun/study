@@ -11,12 +11,8 @@ function App() {
     '다모아통장',
     '가자미구이',
   ]);
-  let [좋아요, 좋아요변경] = useState(0);
+  let [좋아요, 좋아요변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState('false');
-
-  const 좋아 = () => {
-    좋아요변경(좋아요 + 1);
-  };
 
   return (
     <div className="App">
@@ -44,35 +40,28 @@ function App() {
       >
         가나다순정렬
       </button>
+      {
+        // 삼항연산자
+        modal == true ? <Modal /> : null
+      }
 
-      <div className="list">
-        <h4>
-          {글제목[0]}{' '}
-          <span
-            onClick={() => {
-              좋아요변경(좋아요 + 1);
-            }}
-          >
-            💗
-          </span>{' '}
-          {좋아요}{' '}
-        </h4>
-        <p>12월 6일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{글제목[1]}</h4>
-        <p>12월 6일 발행</p>
-      </div>
-      <div className="list">
-        <h4 onClick={()=> 
-        modal == true ? setModal(false) : setModal(true)
-        }>{글제목[2]}</h4>
-        <p>12월 6일 발행</p>
-      </div>
-            {
-              // 삼항연산자
-              modal == true ? <Modal/> : null
-            }
+      {글제목.map(function (a, i) {
+        return (
+          <div className="list" key={i}>
+            <h4 onClick={() => (modal == true ? setModal(false) : setModal(true))}>{ 글제목[i] }</h4>
+            <span
+              onClick={() => {
+                let copy = [...좋아요];
+                copy[i] = copy[i] + 1;
+                좋아요변경(copy)
+              }}
+            >
+              💗
+            </span>{' '}
+            {좋아요[i]} <p>12월 6일 발행</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
