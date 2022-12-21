@@ -14,6 +14,7 @@ function App() {
   let [좋아요, 좋아요변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState('false');
   let [title, setTitle] = useState(0);
+  let [입력값, 입력값변경] = useState('');
 
   return (
     <div className="App">
@@ -45,12 +46,16 @@ function App() {
         return (
           <div className="list" key={i}>
             <h4
-              onClick={() => {setTitle(i); (modal == true ? setModal(false) : setModal(true));}}
+              onClick={() => {
+                setTitle(i);
+                modal == true ? setModal(false) : setModal(true);
+              }}
             >
               {글제목[i]}
             </h4>
             <span
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 let copy = [...좋아요];
                 copy[i] = copy[i] + 1;
                 좋아요변경(copy);
@@ -59,13 +64,40 @@ function App() {
               💗
             </span>{' '}
             {좋아요[i]} <p>12월 6일 발행</p>
+            <button onClick={() => {
+              let copy = [...글제목];
+              copy.splice[(i, 1)];
+              글제목변경(copy);
+            }}>삭제</button>
           </div>
         );
       })}
 
+      <input
+        onChange={(e) => {
+          입력값변경(e.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          let copy = [...글제목];
+          // puch는 뒤, unshift는 앞
+          copy.unshift(입력값);
+          글제목변경(copy);
+        }}
+      >
+        글추가
+      </button>
       {
         // 삼항연산자
-        modal == true ? <Modal color={'skyblue'} 글제목={글제목} 글제목변경={글제목변경} title={title}/> : null
+        modal == true ? (
+          <Modal
+            color={'skyblue'}
+            글제목={글제목}
+            글제목변경={글제목변경}
+            title={title}
+          />
+        ) : null
       }
     </div>
   );
@@ -73,11 +105,17 @@ function App() {
 
 function Modal(props) {
   return (
-    <div className="modal" style={{background:props.color}}>
+    <div className="modal" style={{ background: props.color }}>
       <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button onClick={()=> {props.글제목변경(['코트추천','귀여운하찌','하하하하하'])}}>글 수정</button>
+      <button
+        onClick={() => {
+          props.글제목변경(['코트추천', '귀여운하찌', '하하하하하']);
+        }}
+      >
+        글 수정
+      </button>
     </div>
   );
 }
