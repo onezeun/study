@@ -66,7 +66,7 @@ function App() {
             {좋아요[i]} <p>12월 6일 발행</p>
             <button onClick={() => {
               let copy = [...글제목];
-              copy.splice[(i, 1)];
+              copy.splice(i, 1);
               글제목변경(copy);
             }}>삭제</button>
           </div>
