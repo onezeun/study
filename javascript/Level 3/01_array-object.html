@@ -54,6 +54,10 @@
     .show {
       display: block;
     }
+
+    .form-hide {
+      display: none;
+    }
   </style>
 </head>
 
@@ -65,6 +69,19 @@
       <span class="car-price">가격</span>
     </div>
   </div>
+
+  <form class="container my-5 form-group">
+    <p>상품선택</p>
+    <select class="form-select mt-2">
+      <option>모자</option>
+      <option>셔츠</option>
+      <option>바지</option>
+    </select>
+    <select class="form-select mt-2 form-hide">
+      <option>95</option>
+      <option>100</option>
+    </select>
+  </form>
 
   <div class="container mt-5">
     <ul class="list">
