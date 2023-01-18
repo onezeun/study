@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "target": "es5", // es5 버전 자바스크립트로 컴파일(변환)
+    "module": "commonjs", // require 문법
+  }
+}
