@@ -2,5 +2,6 @@
   "compilerOptions": {
     "target": "es5", // es5 버전 자바스크립트로 컴파일(변환)
     "module": "commonjs", // require 문법
+    "strict": true // null타입 엄격하게 체크
   }
 }
