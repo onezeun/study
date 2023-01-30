@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
 import './App.css';
 import bg from './bg.png';
 import shoesData from './data';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import Detail from './pages/Detail';
+import Cart from './pages/Cart';
 import axios from 'axios';
 
 function App() {
@@ -17,8 +18,6 @@ function App() {
       setShoes(copy);
     });
   };
-
-  let [탭, 탭변경] = useState(0);
 
   return (
     <div className="App">
@@ -54,6 +53,13 @@ function App() {
             >
               Event
             </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate('/cart');
+              }}
+            >
+              Cart
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -84,47 +90,8 @@ function App() {
           <Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
         </Route>
         <Route path="*" element={<div>없는페이지에여~</div>} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
-
-      <Nav variant="tabs" defaultActiveKey="link0">
-        <Nav.Item>
-          <Nav.Link eventKey="link0" onClick={() => 탭변경(0)}>
-            버튼0
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link0" onClick={() => 탭변경(1)}>
-            버튼1
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link0" onClick={() => 탭변경(2)}>
-            버튼2
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-
-      <TabContent 탭={탭} />
-    </div>
-  );
-}
-
-function TabContent({ 탭 }) {
-  let [fade, setFade] = useState('');
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFade('end');
-    }, 100);
-    return () => {
-      //useEffect 실행 전에 실행할 코드
-      setFade('');
-    };
-  }, [탭]);
-
-  return (
-    <div className={'start ' + fade}>
-      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]}
     </div>
   );
 }
