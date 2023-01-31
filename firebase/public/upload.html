@@ -57,18 +57,6 @@
   </nav>
 
   <div class="container mt-3">
-    <div class="product">
-      <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
-      <div class="flex-grow-1 p-4">
-        <h5 class="title">아기다스 신발</h5>
-        <p class="date">2030년 1월 8일</p>
-        <p class="price">20000원</p>
-        <p class="float-end">?0</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container2 mt-3">
     <input type="text" class="form-control mt-2" id="title" placeholder="title">
     <textarea class="form-control mt-2" id="content">content</textarea>
     <input type="text" class="form-control mt-2" id="price" placeholder="price">
@@ -101,21 +89,9 @@
 
 <script>
   const db = firebase.firestore();
-  db.collection('products').get().then((결과) => {
-    결과.forEach((doc) => {
-      console.log(doc)
-      var 템플릿 = `<div class="product">
-      <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
-      <div class="flex-grow-1 p-4">
-        <h5 class="title">${doc.data().제목}</h5>
-        <p class="date">2030년 1월 8일</p>
-        <p class="price">${doc.data().가격}원</p>
-        <p class="float-end">?0</p>
-      </div>
-      </div>`;
-      $('.container').append(템플릿)
-    })
-  })
+  // db.collection('products').doc('상품3').set({제목 : '변기'})
+  // db.collection('products').add({제목 : '변기2'})
+
 </script>
 
 </html>
