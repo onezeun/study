@@ -56,8 +56,29 @@
     </div>
   </nav>
 
-  <div class="container mt-3">
+
+  <div class="container">
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="name" id="name-new">
+    </div>
+    <div class="mb-3">
+      <input type="email" class="form-control" placeholder="email" id="email-new">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" placeholder="pw" id="pw-new">
+    </div>
+    <button type="submit" class="btn btn-primary" id="register">가입하기</button>
   </div>
+
+  <div class="container mt-3">
+    <div class="mb-3">
+      <input type="email" class="form-control" placeholder="email" id="email">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" placeholder="pw" id="pw">
+    </div>
+    <button type="submit" class="btn btn-primary" id="login">로그인하기</button>
+ </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -84,20 +105,31 @@
 
 <script>
   const db = firebase.firestore();
-  db.collection('products').get().then((결과) => {
-    결과.forEach((doc) => {
-      var 템플릿 = `<div class="product">
-      <div class="thumbnail" style="background-image: url('${oc.data().이미지}')"></div>
-      <div class="flex-grow-1 p-4">
-        <h5 class="title">${doc.data().제목}</h5>
-        <p class="date">${doc.data().날짜}</p>
-        <p class="price">${doc.data().가격}원</p>
-        <p class="float-end">🤍0</p>
-      </div>
-      </div>`;
-      $('.container').append(템플릿)
+  const storage = firebase.storage();
+
+  $('#register').click(function () {
+    var 이메일 = $('#email-new').val();
+    var 패스워드 = $('#pw-new').val();
+    var 이름 = $('#name-new').val();
+
+    firebase.auth().createUserWithEmailAndPassword(이메일, 패스워드).then((result) => {
+      // 가입 성공시
+      console.log(result.user)
+      // 이름 같이 저장하고싶을 때
+      result.user.updateProfile({ displayName: 이름 })
     })
   })
+
+  $('#login').click(function() {
+    var 이메일 = $('#email').val();
+    var 패스워드 = $('#pw').val();
+    var 이름 = $('#name').val();
+
+    firebase.auth().signInWithEmailAndPassword(이메일, 패스워드).then((result)=> {
+      console.log(result.user)
+    })
+  })
+
 </script>
 
 </html>
