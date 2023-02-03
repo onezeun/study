@@ -15,7 +15,9 @@
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="./index.html">하찌마켓</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span id="userName"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -59,7 +61,7 @@
       <input type="password" class="form-control" placeholder="pw" id="pw">
     </div>
     <button type="submit" class="btn btn-primary" id="login">로그인하기</button>
- </div>
+  </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -88,6 +90,19 @@
   const db = firebase.firestore();
   const storage = firebase.storage();
 
+
+  // 사용자 인증상태에 변화가 생길때 실행되는 함수
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user.displayName))
+      // $('#userName').text(user.displayName)
+
+      var 뺀거 = localStorage.getItem('user');
+      $('#userName').text(JSON.parse(뺀거.displayName))
+    };
+  });
+
+
   $('#register').click(function () {
     var 이메일 = $('#email-new').val();
     var 패스워드 = $('#pw-new').val();
@@ -101,12 +116,12 @@
     })
   })
 
-  $('#login').click(function() {
+  $('#login').click(function () {
     var 이메일 = $('#email').val();
     var 패스워드 = $('#pw').val();
     var 이름 = $('#name').val();
 
-    firebase.auth().signInWithEmailAndPassword(이메일, 패스워드).then((result)=> {
+    firebase.auth().signInWithEmailAndPassword(이메일, 패스워드).then((result) => {
       console.log(result.user)
     })
   })
