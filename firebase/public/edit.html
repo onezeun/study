@@ -15,7 +15,8 @@
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="./index.html">하찌마켓</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -71,51 +72,27 @@
 <script>
   const db = firebase.firestore();
   const storage = firebase.storage();
+  var 쿼리스트링 = new URLSearchParams(window.location.search)
+  // var file = document.querySelector('#image').files[0];
+
+  // var storageRef = storage.ref();
+  // var 저장할경로 = storageRef.child('image/' + file.name);
+  // var 업로드작업 = 저장할경로.put(file);
+
+  db.collection('products').doc(쿼리스트링.get('id')).get().then((result) => {
+    $('#title').val(result.data().제목);
+    $('#price').val(result.data().가격);
+    $('#content').val(result.data().내용);
+  })
 
   $('#send').click(function () {
-    console.log(JSON.parse(localStorage.getItem('user')))
-    var file = document.querySelector('#image').files[0];
-
-    var storageRef = storage.ref();
-    var 저장할경로 = storageRef.child('image/' + file.name);
-    var 업로드작업 = 저장할경로.put(file);
-
-    업로드작업.on('state_changed',
-      // 변화시 동작하는 함수 (업로드중)
-      null,
-      //에러시 동작하는 함수
-      (error) => {
-        console.error('실패사유는', error);
-      },
-      // 성공시 동작하는 함수
-      () => {
-        // 파이어베이스에서 url 가져오는 함수
-        업로드작업.snapshot.ref.getDownloadURL().then((url) => {
-          imgUrl = url
-          console.log('업로드된 경로는', url);
-
-          var 저장할거 = {
-            제목: $('#title').val(),
-            가격: $('#price').val(),
-            내용: $('#content').val(),
-            날짜: new Date(),
-            이미지: imgUrl,
-            uid: JSON.parse(localStorage.getItem('user')).uid,
-            이름: JSON.parse(localStorage.getItem('user')).displayName
-          };
-          
-          db.collection('products').add(저장할거).then((result) => {
-            // 성공시 실행할거~~
-            window.location.href = '/index.html'
-          }).catch((error) => {
-            // 실패시 실행할거~~
-          })
-        });
-      }
-    );
-
-  });
-
+    var 바꿀거 = {
+      제목: $('#title').val(),
+      내용: $('#price').val()
+    }
+    // 수정 버튼
+    db.collection('products').doc(쿼리스트링.get('id')).update(바꿀거)
+  })
 </script>
 
 </html>

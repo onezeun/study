@@ -15,7 +15,8 @@
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="./index.html">하찌마켓</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -38,7 +39,8 @@
   </nav>
 
   <div class="container">
-    상세페이지임 
+    상세페이지임
+    <button id="edit">수정하기</button>
     <div class="detail-pic my-4" style="background-image: url('https://placeimg.com/640/380/tech');"></div>
     <div>
       <h5>올린사람 : 모름</h5>
@@ -47,7 +49,7 @@
       <p class="date">올린날짜</p>
       <p class="price">가격</p>
     </div>
-</div>
+  </div>
 
 </body>
 
@@ -78,10 +80,15 @@
   const storage = firebase.storage();
   var 쿼리스트링 = new URLSearchParams(window.location.search)
 
-  db.collection('products').doc(쿼리스트링.get('id')).get().then((result)=>{
+  $('#edit').click(function () {
+    window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')
+  })
+
+  db.collection('products').doc(쿼리스트링.get('id')).get().then((result) => {
     $('.title').text(result.data().제목);
     $('.date').text(result.data().날짜);
     $('.price').text(result.data().가격);
+    $('.detail-pic').css('background-image', `url(${result.data().이미지})`);
   })
 </script>
 

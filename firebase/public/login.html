@@ -94,8 +94,8 @@
   // 사용자 인증상태에 변화가 생길때 실행되는 함수
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user.displayName))
       // $('#userName').text(user.displayName)
+      localStorage.setItem('user', JSON.stringify(user))
 
       var 뺀거 = localStorage.getItem('user');
       $('#userName').text(JSON.parse(뺀거.displayName))
@@ -125,7 +125,6 @@
       console.log(result.user)
     })
   })
-
 </script>
 
 </html>
