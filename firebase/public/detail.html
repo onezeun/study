@@ -33,6 +33,9 @@
           <li class="nav-item">
             <a class="nav-link" href="./detail.html">detail</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./chat.html">chat</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -40,7 +43,8 @@
 
   <div class="container">
     상세페이지임
-    <button id="edit">수정하기</button>
+    <button id="edit" class="btn btn-outline-secondary">수정</button>
+    <button class="btn btn-outline-secondary" id="chat">채팅</button>
     <div class="detail-pic my-4" style="background-image: url('https://placeimg.com/640/380/tech');"></div>
     <div>
       <h5>올린사람 : 모름</h5>
@@ -80,15 +84,31 @@
   const storage = firebase.storage();
   var 쿼리스트링 = new URLSearchParams(window.location.search)
 
+  var 판매자uid;
+  var 상품명
+
   $('#edit').click(function () {
     window.location.href = '/edit.html?id=' + 쿼리스트링.get('id')
   })
 
   db.collection('products').doc(쿼리스트링.get('id')).get().then((result) => {
+    판매자uid = result.data().uid;
+    상품명 = result.data().제목;
     $('.title').text(result.data().제목);
     $('.date').text(result.data().날짜);
     $('.price').text(result.data().가격);
     $('.detail-pic').css('background-image', `url(${result.data().이미지})`);
+  })
+
+  var 내uid = JSON.parse(localStorage.getItem('user')).uid
+
+  $('#chat').click(function(){
+    var 데이터 = {
+      who : [ 내uid, 판매자uid],
+      product: 상품명,
+      data : new Date()
+    }
+    db.collection('chatroom').add(데이터)
   })
 </script>
 

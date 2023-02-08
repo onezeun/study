@@ -15,7 +15,6 @@
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="./index.html">하찌마켓</a>
-      <span id="userName"></span>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,6 +32,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./detail.html">detail</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./chat.html">chat</a>
           </li>
         </ul>
       </div>
@@ -98,7 +100,7 @@
       localStorage.setItem('user', JSON.stringify(user))
 
       var 뺀거 = localStorage.getItem('user');
-      $('#userName').text(JSON.parse(뺀거.displayName))
+      // $('#userName').text(JSON.parse(뺀거.displayName))
     };
   });
 
@@ -109,10 +111,13 @@
     var 이름 = $('#name-new').val();
 
     firebase.auth().createUserWithEmailAndPassword(이메일, 패스워드).then((result) => {
-      // 가입 성공시
-      console.log(result.user)
-      // 이름 같이 저장하고싶을 때
-      result.user.updateProfile({ displayName: 이름 })
+      // result.user.updateProfile({ displayName: 이름 })
+      var 유저정보 = {
+        name : 이름,
+        email: 이메일,
+      };
+      
+      db.collection('users').doc(result.user.uid).set(유저정보)
     })
   })
 
