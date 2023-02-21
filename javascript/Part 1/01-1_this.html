@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this 키워드</title>
+</head>
+
+<body>
+  <div></div>
+  <button id="버튼">버튼</button>
+</body>
+
+<script>
+  console.log(this);
+
+  var 오브젝트 = {
+    data: 'kim',
+    함수: function () {
+      console.log(this)
+    }
+  }
+
+  오브젝트.함수();
+
+  var 오브젝트2 = {
+    data: {
+      간지함수: function () { console.log(this) }
+    }
+  }
+  오브젝트2.data.간지함수();
+
+  function 간지나는함수() {
+    console.log(this);
+  }
+
+  간지나는함수();
+
+  function 기계() {
+    this.이름 = 'Kim'
+  }
+
+  var 옵젝 = new 기계();
+  console.log(옵젝);
+
+  document.getElementById('버튼').addEventListener('click', function (e) {
+    console.log(this)
+
+    var 어레이 = [1, 2, 3];
+    어레이.forEach(function (a) {
+      console.log(this); // 내부코드가 3번 반복
+    })
+  })
+
+  var 화살표함수 = {
+      이름들: ['김', '이', '박'],
+      함수: function () {
+        console.log(this)
+        화살표함수.이름들.forEach(() => {
+          console.log(this)
+        });
+      }
+    }
+
+console.log(화살표함수.함수())
+</script>
+
+</html>
