@@ -1,7 +1,13 @@
+import { memo } from 'react';
 import { Alert, Button, Table } from 'react-bootstrap';
-import { useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addCount } from '../store/store.js';
 import { increase } from '../store/userSlice';
+
+let Child = memo(function () {
+  console.log('재랜더링');
+  return <div>자식임</div>;
+});
 
 function Cart() {
   let state = useSelector((state) => state); // redux store 가져와 줌
@@ -9,8 +15,11 @@ function Cart() {
 
   return (
     <div>
-      <Alert>{state.user.name}({state.user.age})의 장바구니</Alert>
-      <Button onClick={()=> dispatch(increase())}>이름나이 변경</Button>
+      <Child />
+      <Alert>
+        {state.user.name}({state.user.age})의 장바구니
+      </Alert>
+      <Button onClick={() => dispatch(increase())}>이름나이 변경</Button>
       <Table>
         <thead>
           <tr>
@@ -28,9 +37,13 @@ function Cart() {
                 <td>{item.name}</td>
                 <td>{item.count}</td>
                 <td>
-                  <Button onClick={() => {
-                    dispatch(addCount(item.id))
-                  }}>+</Button>
+                  <Button
+                    onClick={() => {
+                      dispatch(addCount(item.id));
+                    }}
+                  >
+                    +
+                  </Button>
                 </td>
               </tr>
             );

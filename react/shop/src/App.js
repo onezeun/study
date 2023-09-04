@@ -7,6 +7,11 @@ import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import Detail from './pages/Detail';
 import Cart from './pages/Cart';
 import axios from 'axios';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);
@@ -18,6 +23,12 @@ function App() {
       setShoes(copy);
     });
   };
+
+  let result = useQuery('작명', () =>
+    axios.get('https://codingapple1.github.io/userdata.json').then((a) => {
+      return a.data;
+    }),
+  );
 
   return (
     <div className="App">
@@ -60,6 +71,11 @@ function App() {
             >
               Cart
             </Nav.Link>
+          </Nav>
+          <Nav className="ms-auto">
+            {result.isLoading && '로딩중'}
+            {result.error && '에러남'}
+            {result.data && result.data.name}
           </Nav>
         </Container>
       </Navbar>
