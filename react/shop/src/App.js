@@ -12,6 +12,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query';
+import Improvement from './pages/Improvement';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);
@@ -49,6 +50,13 @@ function App() {
               }}
             >
               Detail
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate('/improvement');
+              }}
+            >
+              성능개선테스트
             </Nav.Link>
             <Nav.Link
               onClick={() => {
@@ -97,6 +105,7 @@ function App() {
           }
         />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/improvement" element={<Improvement />} />
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버임</div>} />
           <Route path="location" element={<div>주소임</div>} />
