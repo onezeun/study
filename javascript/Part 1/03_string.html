@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자열</title>
+  </head>
+
+  <body>
+  </body>
+  <script>
+    // Template literals
+
+    // 1. 문자 중간 엔터키 입력이 가능
+    // 2. 문자 중간에 변수를 집어넣을 때 편리
+    var 문자 = `안녕하세요 ${이름} 입니다`;
+
+    // Tagged Literals
+    var 변수 = '손흥민';
+
+    function 해체분석기(문자들, 변수들) {
+      console.log(문자들[1] + 변수들); //입니다손흥민
+    }
+
+    해체분석기`안녕하세요 ${변수} 입니다`;
+
+    // Spread Operator
+    var 어레이 = ['hello', 'world'];
+    console.log(...어레이); // hello world
+
+    var 문자 = 'hello';
+    console.log(...문자); // h e l l o
+
+    var a = [1, 2, 3];
+    var b = [4, 5];
+    var c = [...a, ...b];
+    console.log(c); // [1, 2, 3, 4, 5]
+
+    var e = [1, 2, 3];
+    var f = a; // 복사된 값 공유
+    var g = [...e];
+
+    e[3] = 4;
+    console.log(e); // [1, 2, 3, 4]
+    console.log(f); // [1, 2, 3, 4]
+    console.log(g); // [1, 2, 3]
+
+    var o1 = { a: 1, b: 2 };
+    var o2 = { ...o1, c: 3 };
+
+    console.log(o1) // { a: 1, b: 2 }
+    console.log(o2) // { a: 1, b: 2, c: 3 }\
+
+    // 값 중복 (뒤에 오는 값이 주인)
+    var o3 = { a: 1, b: 2 };
+    var o4 = { ...o1, a: 2 };
+
+    console.log(o4) // { a: 2, b: 2 }
+  </script>
+</html>

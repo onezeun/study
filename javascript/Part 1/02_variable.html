@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수</title>
+</head>
+
+<body>
+  <div>변수의 Hoisting</div>
+</body>
+<script>
+
+// var 이름 = 'Kim';
+// var 이름 = 'Park';  // O
+// 이름 = 'Han'; // O
+
+// let 주소 = '서울';
+// let 주소 = '부산'; // X
+// 주소 = '홍천'; // O
+
+// const 나이 = 20;
+// const 나이 = 30; // X
+// 나이 = 25; // X
+
+
+// Object 변수
+const 오브젝트 = { 이름 : 'Kim' }
+오브젝트.이름 = 'Park'; //가능
+
+// 변경 불가능한 오브젝트
+Object.freeze(사람)
+
+
+//# 변수의 존재 범위
+
+// - var : 함수(function)
+function 함수(){
+  var 이름 = 'Kim';
+  console.log(이름); //가능
+}
+
+console.log(이름); //에러
+
+
+// - let, const : 거의 모든 {중괄호} (for, if, function 등)
+if ( 1 == 1 ){
+  let 이름 = 'Kim';
+  console.log(이름); //가능
+}
+
+console.log(이름); //에러
+
+
+// # 변수의 Hoisting 현상
+// 변수나 함수의 선언부분을 변수의 범위 맨 위로 강제로 끌고가서 가장 먼저 해석하는 현상
+
+// closure : 변수의 특징 바깥에 있는 변수는 안쪽에서 자유롭게 사용가능
+// 전문 개발자용어로 참조가능하다 
+
+</script>
+
+</html>
