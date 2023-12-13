@@ -1,2 +1,4 @@
 *.mp4
 memo.txt
+
+node_modules/
