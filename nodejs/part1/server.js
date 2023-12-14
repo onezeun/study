@@ -7,7 +7,8 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs') 
 
 let db;
-const url = 'DB URL 주소'
+const url =
+  '';
 new MongoClient(url).connect().then((client) => {
     console.log('DB연결성공');
     db = client.db('forum');
@@ -30,8 +31,7 @@ app.get('/news', function (요청, 응답) {
   응답.send('내일 비온대용');
 });
 
-app.get('/list', async function (요청, 응답) {
-  let result = await db.collection('post').find().toArray()
-  console.log(result)
-  응답.send(result);
+app.get('/list', async (요청, 응답) => {
+  let result = await db.collection('post').find().toArray();
+  응답.render('list.ejs', { 글목록: result });
 });
