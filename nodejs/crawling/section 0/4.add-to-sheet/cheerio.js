@@ -15,7 +15,7 @@ const crawler = async () => {
     const $ = cheerio.load(html);
     const texts = [];
 
-    $('td.txt_l a').each((index, element) => {
+    $('td.txt_l a').each((i, element) => {
       const text = $(element).text().replace(/\s/g, '');
       texts.push(text);
     });
