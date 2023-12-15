@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const xlsx = require('xlsx');
-const add_to_sheet = require('./add_to_sheet');
+// const add_to_sheet = require('./add_to_sheet');
 
 const crawler = async () => {
   const workbook = xlsx.utils.book_new();
@@ -25,7 +25,7 @@ const crawler = async () => {
 
     console.log('Adding data to sheet');
 
-    xlsx.writeFile(workbook, 'xlsx/result.xlsx');
+    xlsx.writeFile(workbook, '../../_xlsx/result.xlsx');
   }
 };
 

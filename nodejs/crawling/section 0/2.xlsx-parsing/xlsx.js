@@ -1,6 +1,6 @@
 const xlsx = require('xlsx');
 
-const workbook = xlsx.readFile('xlsx/20231215.xlsx');
+const workbook = xlsx.readFile('../../_xlsx/20231215.xlsx');
 // console.log(Object.keys(workbook.Sheets)) // 시트 목록 가져오기
 
 
