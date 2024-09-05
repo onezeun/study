@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme('colors.gray_300');
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: theme('colors.gray_500');
+}
+
+/* 폰트사이즈 */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  html {
+      font-size: 14px;
+  }
+}
+
+@media (min-width: 481px) {
+  html {
+      font-size: 16px;
+  }
+}
