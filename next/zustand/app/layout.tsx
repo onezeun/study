@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { pretendard, notosans } from './_utils/fonts';
+import { pretendard } from './_utils/fonts';
+import Providers from './_utils/provider';
 
 export const metadata: Metadata = {
   title: '쭈쓰텐드',
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className}`}>{children}</body>
+      <body className={`${pretendard.className}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
