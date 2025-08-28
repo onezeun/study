@@ -1,0 +1,42 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "createDefaultProgram": true
+  },
+  // eslint가 전역 변수를 인식하는 구간
+  "env": {
+    "browser": true,  // 브라우저 환경 (document, window 등 인식)
+    "node": true,     // Node.js 환경 (require, module 등 인식)
+    "es6": true       // ES6+ 문법 사용 가능
+  },
+  "extends": [
+    "next",                             // Next.js 권장 설정
+    "next/core-web-vitals",             // Next.js Core Web Vitals 관련 설정
+    "eslint:recommended",               // ESLint의 기본 권장 설정
+    "plugin:@typescript-eslint/recommended",
+    "prettier",                         // Prettier와 중복되는 ESLint 규칙 비활성화
+    "plugin:prettier/recommended"       // eslint의 포매팅을 prettier로 사용
+  ],
+  "overrides": [],
+  "rules": {
+    "no-var": "error",                  // var 사용 금지
+    "no-extra-semi": "error",           // 불필요한 세미콜론 금지
+    "no-console": "off",                // console 사용 허용
+    "import/prefer-default-export": "off", // default export 권장 비활성화
+    "react/react-in-jsx-scope": "off",  // React 17+에서는 React import가 필요 없으므로 비활성화
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] } // JSX를 사용할 수 있는 파일 확장자
+    ],
+    "no-multiple-empty-lines": "warn",  // 여러 줄의 공백 금지
+    "react/jsx-key": "warn",            // 반복문으로 생성하는 JSX 요소에 key 설정 경고
+    "react/jsx-pascal-case": "warn",    // 컴포넌트 이름은 PascalCase 경고
+    "@typescript-eslint/no-unused-vars": "warn", // 사용되지 않는 변수 경고
+    "prettier/prettier": ["error", { "endOfLine": "auto" }], // Prettier의 줄바꿈 규칙 설정
+    "@typescript-eslint/no-explicit-any": "off" // any 타입 오류 무시
+  },
+  "ignorePatterns": ["public", ".next"] // 린트에서 제외할 폴더
+}

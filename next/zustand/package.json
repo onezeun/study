@@ -1,0 +1,58 @@
+{
+  "name": "cultureplus-fe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 4000",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix .",
+    "format": "npx prettier --write app",
+    "mock": "npx tsx watch ./app/_mocks/http.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
+  "lint-staged": {
+    "*.ts": "yarn lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.54.1",
+    "@tanstack/react-query-devtools": "^5.54.1",
+    "@tanstack/react-query-next-experimental": "^5.54.1",
+    "immer": "^10.1.1",
+    "next": "14.2.8",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@mswjs/http-middleware": "^0.10.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "cors": "^2.8.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.8",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "express": "^4.19.2",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "msw": "^2.4.2",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
